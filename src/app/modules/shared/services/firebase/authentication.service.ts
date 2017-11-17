@@ -30,6 +30,7 @@ export class AuthenticationService {
         fbAuth.signInWithEmailAndPassword(login, password)
         .then(res => {
           if(fbAuth.currentUser.emailVerified) {
+            console.log(33)
             let email = fbAuth.currentUser.email;
             let uid = fbAuth.currentUser.uid;
 
@@ -45,6 +46,7 @@ export class AuthenticationService {
               message: "Login successful"
             });
           } else {
+            console.log(49)
             resolve({
               cod: "l-02",
               message: "Authentication not validated."
@@ -107,40 +109,40 @@ export class AuthenticationService {
       }
     } else {
       if(!params.email) {
-        return {
+        resolve({
           cod: "s-02",
           message: "Email needed - e.g.: email<string>"
-        }
+        })
       }
       
       if(!params.repeatEmail) {
-        return {
+        resolve({
           cod: "s-03",
           message: "Repeat email needed - e.g.: repeatEmail<string>"
-        }
+        })
       }
 
       if(!params.type) {
-        return {
+        resolve({
           cod: "s-04",
           message: "Type needed - e.g.: type<string>"
-        }
+        })
       }
 
       if(!params.password) {
         if(!params.type) {
-          return {
+          resolve({
             cod: "s-04",
             message: "Password needed - e.g.: password<string>"
-          }
+          })
         } else {
           if(params.type === "invitation") {
             params.password = "*}$#@$tk$tk$c@#<@#}{r@#32131@#(@c#r@";
           } else {
-            return {
+            resolve({
               cod: "s-05",
               message: "Password needed - e.g.: password<string>"
-            }
+            })
           }
         }
       }
@@ -160,13 +162,13 @@ export class AuthenticationService {
         if(snap.val() != null) {
           resolve("E-mail registered yet");
         } else {
-          if(params.firstUsername === "") {
+          if(params.firstUsername === "" || !params.firstUsername) {
             emailToUsername = params.email.split('@');
             username = emailToUsername[0];
           } else {
             username = params.firstUsername;
           }
-          
+
           //Checking if signing up username exists
           fbDatabase.ref('/users')
           .orderByChild('username')
@@ -186,6 +188,8 @@ export class AuthenticationService {
                   username: username
                 })
 
+                fbAuth.currentUser.sendEmailVerification();
+                
                 fbAuth.sendPasswordResetEmail(params.email)
                 .then(res => {
                   resolve({

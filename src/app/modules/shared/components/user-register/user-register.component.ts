@@ -73,7 +73,7 @@ export class UserRegisterComponent implements OnInit {
       toolbar: {
         title: "Users list",
         delete: [{
-          routeAfterDelete: '/main/userRegister',
+          routeAfterDelete: '/main/user-register',
           routeToApi: 'users',
           fieldToDelete: '__key'
         }],
@@ -96,7 +96,8 @@ export class UserRegisterComponent implements OnInit {
     if(this.params.type === "invitation") {
       let params = {
         email: this.userRegisterForm.get('email').value,
-        repeatEmail: this.userRegisterForm.get('repeatEmail').value
+        repeatEmail: this.userRegisterForm.get('repeatEmail').value,
+        type: "invitation"
       }
 
       this.authentication.signup(params)
