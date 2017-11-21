@@ -40,7 +40,7 @@ export class ForgotPasswordComponent implements OnInit {
     
     email = this.forgotPasswordForm.controls['field_0_email'].value;
     
-    /*this.authentication.recoverPasswordEmail(email)
+    this.authentication.recoverPasswordEmail(email)
     .then(res => {
       this.msg = res;
 
@@ -53,6 +53,6 @@ export class ForgotPasswordComponent implements OnInit {
       }
 
       this.dialogRef.close();
-    });*/
+    });
   }
 }

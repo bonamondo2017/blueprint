@@ -16,7 +16,9 @@ export class MainComponent implements OnInit {
       menuSettings: [{
         description: "Convite para usuário",
         route: ['/main/user-register']
-      }]
+      }], paramsToLogout: {
+        routeAfterLogout: ['/login']
+      }
     };
   }
 

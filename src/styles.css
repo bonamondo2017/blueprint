@@ -3,3 +3,7 @@
 @import './assets/css/reset.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+a {
+    color: #000;
+}

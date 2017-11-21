@@ -3,11 +3,11 @@
 <div id="sidenav"
 *ngIf="toggle"
 [@myAnimation]>
-  <span 
+  <div
   *ngFor="let menu of params.menuSettings; let i = index;"
-  [ngStyle]="{ 'position': 'absolute', 'top': 40*(i+3)+'px', 'left': '20px', 'font-size': '16px'}">
-    <a (click)="onMenuRoute(menu.route)">{{menu.description}}</a>
-  </span>
+  [ngStyle]="{ 'position': 'absolute', 'top': 40*(i+3)+'px', width: '100%', 'font-size': '16px'}">
+    <button (click)="onMenuRoute(menu.route)" mat-button id="menu-button">{{menu.description}}</button>
+  </div>
 </div>
 
 <span *ngIf="errors.length < 1" class="menu-icon">
