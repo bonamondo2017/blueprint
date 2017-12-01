@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
         googleIcon: 'help',
         url:'http://www.google.com'
       },
-      forgotPassword: true
+      forgotPassword: true,
+      language: 'pt-br'
     }
   }
 

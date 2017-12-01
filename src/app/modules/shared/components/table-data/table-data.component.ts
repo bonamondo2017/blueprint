@@ -168,10 +168,10 @@ export class TableDataComponent implements OnInit, OnChanges {
       }
 
       if(!this.params.actionToolbar.language) {
-        this.params.actionToolbar.language = "en";
+        this.params.actionToolbar.language = "en-us";
       }
 
-      if(this.params.actionToolbar.language == 'en') {
+      if(this.params.actionToolbar.language == 'en-us') {
         this.placeholderToRowsPerPage = "Rows per page";
         this.placeholderToPage = "of";
         this.placeholderToSearch = "Field to search";

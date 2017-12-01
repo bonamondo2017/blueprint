@@ -34,7 +34,7 @@
         <div class="float-left  div-form-pattern w290">
           <mat-input-container>
             <input matInput formControlName="password" type="password"
-            placeholder="Senha" maxlength="191">
+            placeholder="{{placeholderToPasswordLanguage}}" maxlength="191">
           </mat-input-container>
         </div>
       </div>
@@ -45,11 +45,11 @@
 
       <button style="margin-right:16px;" mat-raised-button type="submit"
       color="primary" [disabled]="!loginForm.valid">
-        Entrar
+        {{submitButtonLanguage}}
       </button>
 
       <a mat-button (click)="onForgotPassword()"
-      *ngIf="params.forgotPassword">Esqueci a senha</a>
+      *ngIf="params.forgotPassword">{{forgotPasswordLanguage}}</a>
     </mat-card-actions>  
 
   </form>

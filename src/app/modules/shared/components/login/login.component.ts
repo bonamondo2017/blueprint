@@ -21,8 +21,11 @@ export class LoginComponent implements OnInit {
   @Input() params;
 
   errors = [];
-  loginForm: FormGroup;
+  forgotPasswordLanguage: string;
   imageTitle: string;
+  loginForm: FormGroup;
+  placeholderToPasswordLanguage: string;
+  submitButtonLanguage: string;
 
   constructor(
     private authentication: AuthenticationService,
@@ -38,6 +41,27 @@ export class LoginComponent implements OnInit {
           cod: 'bonamondo-l-01',
           message: "Definir rota do login"
         });
+      }
+
+      if(!this.params.routeAfterLoggedIn) {
+        this.errors.push({
+          cod: 'bonamondo-l-01',
+          message: "Definir rota do login"
+        });
+      }
+
+      if(!this.params.language) {
+        this.params.language = "en-us";
+
+        this.placeholderToPasswordLanguage = "Password";
+        this.submitButtonLanguage = "Login";
+        this.forgotPasswordLanguage = "Forgot password";
+      } else {
+        if(this.params.language == "pt-br") {
+          this.placeholderToPasswordLanguage = "Senha";
+          this.submitButtonLanguage = "Entrar";
+          this.forgotPasswordLanguage = "Esqueci a senha";
+        }
       }
     } else {
       this.errors.push({
@@ -55,7 +79,11 @@ export class LoginComponent implements OnInit {
   onForgotPassword = () => {
     //this.router.navigate(this.params.forgotPasswordRoute);
     let dialogRef = this.dialog.open(ForgotPasswordComponent, {
-      width: '300px'
+      width: '300px',
+      height: '230px',
+      data: {
+        language: this.params.language
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {      

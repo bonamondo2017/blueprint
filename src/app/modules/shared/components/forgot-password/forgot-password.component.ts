@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Inject, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
@@ -12,12 +12,16 @@ import { AuthenticationService } from './../../services/firebase/authentication.
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
+  @Input() params;
   @Output()
   change: EventEmitter<string> = new EventEmitter<string>();
 
+  forgotPasswordForm: FormGroup;
   isLoading = true;
   msg;
-  forgotPasswordForm: FormGroup;
+  placeholderToEmail: string;
+  submitButton: string;
+  titleLanguage: string;
   
   constructor(
     private authentication: AuthenticationService,
@@ -32,7 +36,17 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.data.language == 'pt-br') {
+      this.placeholderToEmail = "Seu email";
+      this.submitButton = "Enviar link de recuperação";
+      this.titleLanguage = "Recuperar Senha";
+    }
 
+    if(this.data.language == 'en-us') {
+      this.placeholderToEmail = "Your e-mail here";
+      this.submitButton = "Send link to recover";
+      this.titleLanguage = "Recover Password";
+    }
   }
   
   forgotPassword = () => {
