@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule, MatChipsModule, MatNativeDateModule, MatCardModule, MatDialogModule, MatSelectModule, MatCheckboxModule,
-  MatInputModule,MatSnackBarModule, MatIconModule, MatButtonModule, MatSlideToggleModule,MatToolbarModule, MatProgressBarModule } from '@angular/material';
+  MatInputModule,MatSnackBarModule, MatIconModule, MatButtonModule, MatSlideToggleModule,MatToolbarModule, MatProgressBarModule, MatSliderModule } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
 
 /**
@@ -39,6 +39,11 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AuthenticationService } from './services/firebase/authentication.service';
 import { CrudService } from './services/firebase/crud.service';
 
+/**
+ * Directives
+ */
+import { NtmSliderDirective } from './components/ntm-slider.directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -56,8 +61,9 @@ import { CrudService } from './services/firebase/crud.service';
     MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    TextMaskModule
-  ],
+    TextMaskModule,
+    MatSliderModule
+   ],
   exports:[
     CountdownComponent,
     DeleteConfirmComponent,
@@ -79,10 +85,12 @@ import { CrudService } from './services/firebase/crud.service';
     MenuSidenavComponent,
     MatSlideToggleModule,
     MatToolbarModule,
+    MatSliderModule,
     ReactiveFormsModule,
     ScheduleComponent,
     TableDataComponent,
     TextMaskModule,
+    NtmSliderDirective,
     UserRegisterComponent
   ],
   declarations: [
@@ -94,7 +102,8 @@ import { CrudService } from './services/firebase/crud.service';
     MenuSidenavComponent,
     ScheduleComponent,
     TableDataComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    NtmSliderDirective
   ],
   providers: [
     AuthenticationService,

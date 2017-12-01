@@ -11,18 +11,21 @@
       <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
     </mat-card-header>
     <form (ngSubmit)="onUserRegisterFormSubmit()" [formGroup]="userRegisterForm">
+
       <mat-form-field id="email">
         <input matInput formControlName="email" type="text" placeholder="Email">
       </mat-form-field>
 
       <mat-form-field id="repeatEmail">
         <input matInput formControlName="repeatEmail" type="text" placeholder="Repeat Email">
-      </mat-form-field>
+      </mat-form-field>      
       
       <mat-card-actions>
         <button mat-raised-button type="submit" color="primary" [disabled]="!userRegisterForm.valid">Invite</button>    
       </mat-card-actions>
+
     </form>
+
   </mat-card>
 
   <bonamondo-table-data [params]="paramsToTableData"></bonamondo-table-data>

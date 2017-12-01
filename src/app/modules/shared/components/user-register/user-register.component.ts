@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { MatSliderModule } from '@angular/material/slider';
 import { ActivatedRoute, Router } from '@angular/router';
 
 /**

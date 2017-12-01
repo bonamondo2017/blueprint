@@ -1,0 +1,10 @@
+<form (ngSubmit)="onCrawlerFormSubmit()" [formGroup]="crawlerForm">
+    <mat-form-field class="mat-pattern">
+        <input matInput placeholder="Sua pesquisa" formControlName="search_input">
+    </mat-form-field>
+    <mat-card-actions>
+        <button mat-raised-button type="submit" color="primary">Pesquisar</button> 
+    </mat-card-actions>
+    <br>
+    <p>{{SearchResult}}</p>    
+</form>
